@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/hobbits";
+const pgConnection = process.env.DATABASE_URL || "postgresql://postgres@localhost/characters";
 
 
 module.exports = {
@@ -12,7 +12,10 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations:{
-      directory: './migrations/migrations'
+      directory: './data/migrations',
+    },
+    seeds:{
+      directory: './data/seeds',
     }
   },
 
@@ -23,28 +26,14 @@ module.exports = {
     },
     useNullAsDefault: true,
     migrations: {
-      directory: "./migrations/migrations",
+      directory: "./data/migrations",
     },
     seeds: {
-      directory: "./migrations/seeds",
+      directory: "./data/seeds",
     },
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
+
 
   production: {
     client: 'pg',
@@ -54,7 +43,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-directory: './migrations/migrations',
+directory: './data/migrations',
     },
   
   }
